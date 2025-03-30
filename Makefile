@@ -32,3 +32,10 @@ $(OBJ_DIR):
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(HEADER_DIR)$(HEADER)| $(OBJ_DIR)
 	echo Compiling $< to $@
 	$(CC) $(FLAGS) -c $< -I$(HEADER_DIR) -I$(LIBFT_DIR) -o $@
+
+
+# ==== DEBUG ==== #
+
+main:
+	cc -Wall -Wextra -g $(addprefix $(SRC_DIR), $(SRC)) -L$(LIBFT_DIR) -lft -I$(HEADER_DIR) -I$(LIBFT_DIR) -o a.out
+	./a.out

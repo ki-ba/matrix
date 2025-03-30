@@ -10,22 +10,35 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/* This file is present for testing and demonstration purposes only.
+ * To run the code present in this file, run `make main`
+ */
 #include "matrix.h"
-
 int	main(void)
 {
-	t_matrix	m4;
-	t_matrix	m10;
-	t_matrix	m1;
-	t_matrix	m0;
+	t_matrix	a;
+	t_matrix	b;
+	t_matrix	c;
+	t_matrix	d;
+	t_matrix	mult;
+	t_matrix	mult2;
+	int		values[3] = {5,6,7};
+	int		values2[3] = {1,2,3};
+	int		values3[4] = {1,2,3,4};
+	int		values4[9] = {1,2,3,4,5,6,7,8,9};
 
-	create_id_matrix(&m4, 4);
-	create_id_matrix(&m10, 10);
-	create_id_matrix(&m1, 1);
-	create_id_matrix(&m0, 0);
-	print_matrix(m4);
-	print_matrix(m10);
-	print_matrix(m1);
-	print_matrix(m0);
+	create_matrix(&a, 3, 1, values);
+	create_matrix(&b, 1, 3, values2);
+	create_matrix(&c, 2, 2, values3);
+	create_matrix(&d, 9, 1, values4);
+	(void)mult;
+	print_matrix(a);
+	print_matrix(b);
+	/*print_matrix(c);*/
+	/*print_matrix(d);*/
+	mx_mult(&mult, a, b);
+	mx_mult(&mult2, b, a);
+	print_matrix(mult);
+	print_matrix(mult2);
 	return (0);
 }
