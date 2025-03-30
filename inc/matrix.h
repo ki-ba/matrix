@@ -19,16 +19,12 @@ typedef struct s_matrix
 	double	**m;
 }			t_matrix;
 
-/* @brief creates an identity matrix of size n. */
+/* matrix.c */
 void		create_id_matrix(t_matrix *mx, size_t n);
-/* @brief	creates a null matrix of i rows and j cols. */
 void		create_null_matrix(t_matrix *mx, size_t i, size_t j);
-/* @brief	prints specified matrix in stdout. */
 void		print_matrix(t_matrix m);
-/* @brief	allocates and intitializes a matrix of i rows x j cols with
-*		the specified values. */
 void		create_matrix(t_matrix *mx, size_t i, size_t j, int *values);
-/* @brief	allocates and populates the matrix p as product of a and b.*/
-void		mx_mult(t_matrix *p, t_matrix a, t_matrix b);
-/* @brief	frees the memory. */
 void		destroy_matrix(t_matrix *mx);
+
+/* mx_math.c */
+void		mx_mult(t_matrix *p, t_matrix a, t_matrix b);
