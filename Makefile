@@ -1,4 +1,4 @@
-NAME = matrix.a
+NAME = libmatrix.a
 CC = cc
 FLAGS = -Wall -Wextra -Werror -g
 
