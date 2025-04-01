@@ -83,7 +83,7 @@ void	print_matrix(t_matrix m)
 
 /* @brief	allocates and intitializes a matrix of i rows x j cols with
 *		the specified values. */
-void	create_matrix(t_matrix *mx, size_t i, size_t j, int *values)
+void	create_matrix(t_matrix *mx, size_t i, size_t j, double *values)
 {
 	size_t	k;
 	size_t	l;

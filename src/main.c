@@ -20,15 +20,15 @@ int	main(void)
 	t_matrix	a;
 	t_matrix	b;
 	t_matrix	mult;
-	int			values[3];
-	int			values2[3];
+	double		values[3];
+	double		values2[3];
 
-	values[0] = 5;
-	values[1] = 6;
-	values[2] = 7;
-	values2[0] = 1;
-	values2[1] = 2;
-	values2[2] = 3;
+	values[0] = 5.4;
+	values[1] = 6.3;
+	values[2] = 7.4;
+	values2[0] = 1.2;
+	values2[1] = -2;
+	values2[2] = 3.0;
 	create_matrix(&a, 3, 1, values);
 	create_matrix(&b, 1, 3, values2);
 	print_matrix(a);

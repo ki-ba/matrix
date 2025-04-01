@@ -23,7 +23,7 @@ typedef struct s_matrix
 void		create_id_matrix(t_matrix *mx, size_t n);
 void		create_null_matrix(t_matrix *mx, size_t i, size_t j);
 void		print_matrix(t_matrix m);
-void		create_matrix(t_matrix *mx, size_t i, size_t j, int *values);
+void		create_matrix(t_matrix *mx, size_t i, size_t j, double *values);
 void		destroy_matrix(t_matrix *mx);
 
 /* mx_math.c */
