@@ -78,21 +78,21 @@ void	print_matrix(t_matrix m)
 	size_t	i;
 	size_t	j;
 
-	ft_printf("=== MATRIX %d x %d ===\n\n", m.i, m.j);
+	printf("=== MATRIX %zu x %zu ===\n\n", m.i, m.j);
 	i = 0;
 	while (i < m.i)
 	{
 		j = 0;
 		while (j < m.j)
 		{
-			ft_printf("%d	", (int)(m.m[i][j]));
+			printf("%.2f	", (m.m[i][j]));
 			if (j == m.j - 1)
-				ft_printf("\n");
+				printf("\n");
 			++j;
 		}
 		++i;
 	}
-	ft_printf("===================\n\n", m.i, m.j);
+	printf("===================\n\n");
 }
 
 /* @brief	allocates and intitializes a matrix of i rows x j cols with
