@@ -17,9 +17,11 @@
 
 int	main(void)
 {
-	t_matrix	a;
-	t_matrix	b;
-	t_matrix	mult;
+	t_matrix	*a;
+	t_matrix	*b;
+	t_matrix	*mult;
+	t_matrix	*mult2;
+
 	double		values[3];
 	double		values2[3];
 
@@ -29,11 +31,16 @@ int	main(void)
 	values2[0] = 1.2;
 	values2[1] = -2;
 	values2[2] = 3.0;
-	create_matrix(&a, 3, 1, values);
-	create_matrix(&b, 1, 3, values2);
-	print_matrix(a);
-	print_matrix(b);
-	mx_mult(&mult, a, b);
-	print_matrix(mult);
+	a = create_matrix(3, 1, values);
+	b = create_matrix(1, 3, values2);
+	print_matrix(*a);
+	print_matrix(*b);
+	mult = mx_mult(*a, *b);
+	mult2 = mx_mult(*b, *a);
+	print_matrix(*mult);
+	print_matrix(*mult2);
+	destroy_matrix(a);
+	destroy_matrix(b);
+	destroy_matrix(mult);
 	return (0);
 }

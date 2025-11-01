@@ -20,11 +20,11 @@ typedef struct s_matrix
 }			t_matrix;
 
 /* matrix.c */
-void		create_id_matrix(t_matrix *mx, size_t n);
-void		create_null_matrix(t_matrix *mx, size_t i, size_t j);
+t_matrix	*create_id_matrix(size_t n);
+t_matrix	*create_null_matrix(size_t i, size_t j);
 void		print_matrix(t_matrix m);
-void		create_matrix(t_matrix *mx, size_t i, size_t j, double *values);
-void		destroy_matrix(t_matrix *mx);
+t_matrix	*create_matrix(size_t i, size_t j, double *values);
+void		*destroy_matrix(t_matrix *mx);
 
 /* mx_math.c */
-void		mx_mult(t_matrix *p, t_matrix a, t_matrix b);
+t_matrix	*mx_mult(t_matrix a, t_matrix b);

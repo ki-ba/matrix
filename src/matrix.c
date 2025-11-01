@@ -13,18 +13,20 @@
 #include "matrix.h"
 
 /* @brief creates an identity matrix of size n. */
-void	create_id_matrix(t_matrix *mx, size_t n)
+t_matrix	*create_id_matrix(size_t n)
 {
 	size_t		i;
 	size_t		j;
+	t_matrix	*mx;
 
+	mx = create_null_matrix(n, n);
+	if (!mx)
+		return (NULL);
 	mx->i = n;
 	mx->j = n;
-	mx->m = ft_calloc(mx->i, sizeof(double *));
 	i = 0;
 	while (i < mx->i)
 	{
-		mx->m[i] = ft_calloc(mx->j, sizeof(double));
 		j = 0;
 		while (j < mx->j)
 		{
@@ -36,11 +38,20 @@ void	create_id_matrix(t_matrix *mx, size_t n)
 		}
 		++i;
 	}
+	return (mx);
 }
 
-/* @brief	creates a null matrix of i rows and j cols. */
-void	create_null_matrix(t_matrix *mx, size_t i, size_t j)
+/* @brief	creates a null matrix of i rows and j cols. 
+ * @param	i the number of rows.
+ * @param	j the number of columns.
+*/
+t_matrix	*create_null_matrix(size_t i, size_t j)
 {
+	t_matrix	*mx;
+
+	mx = ft_calloc(1, sizeof(t_matrix));
+	if (!mx)
+		return (NULL);
 	mx->i = i;
 	mx->j = j;
 	mx->m = ft_calloc(mx->i, sizeof(double *));
@@ -48,6 +59,8 @@ void	create_null_matrix(t_matrix *mx, size_t i, size_t j)
 	while (i < mx->i)
 	{
 		mx->m[i] = ft_calloc(mx->j, sizeof(double));
+		if (!(mx->m[i]))
+			return (destroy_matrix(mx));
 		j = 0;
 		while (j < mx->j)
 		{
@@ -56,6 +69,7 @@ void	create_null_matrix(t_matrix *mx, size_t i, size_t j)
 		}
 		++i;
 	}
+	return (mx);
 }
 
 /* @brief	prints specified matrix in stdout. */
@@ -83,12 +97,15 @@ void	print_matrix(t_matrix m)
 
 /* @brief	allocates and intitializes a matrix of i rows x j cols with
 *		the specified values. */
-void	create_matrix(t_matrix *mx, size_t i, size_t j, double *values)
+t_matrix	*create_matrix(size_t i, size_t j, double *values)
 {
-	size_t	k;
-	size_t	l;
+	size_t		k;
+	size_t		l;
+	t_matrix	*mx;
 
-	create_null_matrix(mx, i, j);
+	mx = create_null_matrix(i, j);
+	if (!mx)
+		return (NULL);
 	k = 0;
 	while (k < i)
 	{
@@ -100,10 +117,11 @@ void	create_matrix(t_matrix *mx, size_t i, size_t j, double *values)
 		}
 		++k;
 	}
+	return (mx);
 }
 
 /* @brief	frees the memory. */
-void	destroy_matrix(t_matrix *mx)
+void	*destroy_matrix(t_matrix *mx)
 {
 	size_t	i;
 
@@ -111,4 +129,6 @@ void	destroy_matrix(t_matrix *mx)
 	while (++i < mx->i)
 		free(mx->m[i]);
 	free(mx->m);
+	free(mx);
+	return (NULL);
 }

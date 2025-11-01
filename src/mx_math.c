@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   matrix.c                                           :+:      :+:    :+:   */
+/*   mx_math.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,6 +12,7 @@
 
 #include "matrix.h"
 
+/* @brief	calculates and return the scalar product between 2 matrixes. */
 static double	calculate_product(t_matrix a, t_matrix b, size_t i, size_t j)
 {
 	double	sum;
@@ -28,17 +29,20 @@ static double	calculate_product(t_matrix a, t_matrix b, size_t i, size_t j)
 }
 
 /* @brief	allocates and populates the matrix p as product of a and b.*/
-void	mx_mult(t_matrix *p, t_matrix a, t_matrix b)
+t_matrix	*mx_mult(t_matrix a, t_matrix b)
 {
-	size_t	i;
-	size_t	j;
+	size_t		i;
+	size_t		j;
+	t_matrix	*p;
 
 	i = 0;
 	if (a.j != b.i)
 		ft_putstr_fd("Error : matrices aren't multipliable\n", 2);
 	else
 	{
-		create_null_matrix(p, a.i, b.j);
+		p = create_null_matrix(a.i, b.j);
+		if (!p)
+			return (NULL);
 		while (i < p->i)
 		{
 			j = 0;
@@ -49,5 +53,7 @@ void	mx_mult(t_matrix *p, t_matrix a, t_matrix b)
 			}
 			++i;
 		}
+		return (p);
 	}
+	return (NULL);
 }

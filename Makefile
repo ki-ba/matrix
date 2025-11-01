@@ -1,7 +1,8 @@
 NAME = libmatrix.a
 CC = cc
-FLAGS = -Wall -Wextra -Werror -g
+FLAGS = -Wall -Wextra -Werror
 
+DEMO_NAME = demo
 HEADER_DIR = inc/
 LIBFT_DIR = libft/
 HEADER = matrix.h
@@ -17,14 +18,17 @@ all:	lib $(NAME)
 
 lib:
 	$(MAKE) -C $(LIBFT_DIR)
+
 clean:
 	rm -rf $(OBJ_DIR)
 
 fclean: clean
 	rm -rf $(NAME)
+	rm -rf $(DEMO_NAME)
 
 re:	fclean
 	$(MAKE) all
+
 $(NAME): $(OBJ)
 	ar -rcs $(NAME) $(OBJ)
 
@@ -39,5 +43,5 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(HEADER_DIR)$(HEADER)| $(OBJ_DIR)
 # ==== DEBUG ==== #
 
 main:
-	cc -Wall -Wextra -g $(addprefix $(SRC_DIR), $(SRC)) src/main.c -L$(LIBFT_DIR) -lft -I$(HEADER_DIR) -I$(LIBFT_DIR) -o a.out
-	./a.out
+	cc -Wall -Wextra -g $(addprefix $(SRC_DIR), $(SRC)) src/main.c -L$(LIBFT_DIR) -lft -I$(HEADER_DIR) -I$(LIBFT_DIR) -o $(DEMO_NAME)
+	./$(DEMO_NAME)

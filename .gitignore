@@ -2,3 +2,5 @@
 .obj/
 .cache/
 *.out
+*.dYSM
+*.json
